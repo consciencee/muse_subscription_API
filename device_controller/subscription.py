@@ -12,6 +12,6 @@ class Subscription:
     def rm_subscriber(self, subscriber):
         self.subscribers.remove(subscriber)
 
-    def notify_all_subscribers(self, data):
+    def notify_all_subscribers(self, data, timestamp):
         for subscriber in self.subscribers:
-            subscriber.on_event(data)
+            subscriber.on_event(data, timestamp)
