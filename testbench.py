@@ -3,8 +3,19 @@ from muselsl import stream, list_muses, view
 #import pyqt5
 
 from device_controller import container
+from device_controller.datareceiver import Datareceiver, eeg_preset
 
-#matplotlib.use("Qt5Agg")
+
+class TestSubscriber:
+    def __init__(self):
+        self.buffer = []
+        self.time_buffer = []
+
+    def on_event(self, data, timestamp):
+        print('Received time: %s data: %s' % (timestamp, data))
+        self.buffer.append(data)
+        self.time_buffer.append(timestamp)
+
 
 #list devices
 devices = container.Container()
@@ -14,4 +25,10 @@ devices.update_devlist()
 single_muse = devices.get_all_devices()[0]
 single_muse.stream.start()
 
-view(backend="Qt5Agg")
+receiver = Datareceiver(settings=eeg_preset)
+subscriber = TestSubscriber()
+receiver.subscription.add_subscriber(subscriber)
+receiver.receive_parallel()
+
+# receive is not working with view
+#view(backend="Qt5Agg")
