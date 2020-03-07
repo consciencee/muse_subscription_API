@@ -59,7 +59,7 @@ class Datareceiver:
 
                 if timestamp:
                     res.append(data)
-                    self.subscription.notify_all_subscribers(data, timestamp)
+                    self.subscription.notify_all_subscribers(self.settings.type, data, timestamp)
                     timestamps.extend(timestamp)
             except KeyboardInterrupt:
                 break
