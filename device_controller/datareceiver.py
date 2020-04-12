@@ -14,11 +14,16 @@ ppg_preset = Preset('PPG', LSL_PPG_CHUNK)
 acc_preset = Preset('ACC', LSL_ACC_CHUNK)
 gyro_preset = Preset('GYRO', LSL_GYRO_CHUNK)
 
+ChannelDescriptor = namedtuple('ChannelDescriptor', 'type ch_names sample_rate')
+
 
 class Datareceiver:
     def __init__(self, settings=eeg_preset):
         self.settings = settings
         self.subscription = Subscription()
+        # self.n_channels = None
+        # self.sample_rate = None
+        # self.channels = []
 
     def receive_parallel(self):
         process = Process(target=self.receive)
@@ -45,6 +50,9 @@ class Datareceiver:
             ch = ch.next_sibling()
             ch_names.append(ch.child_value('label'))
 
+
+        channel_descriptor = ChannelDescriptor(self.settings.type, ch_names, info.nominal_srate())
+
         res = []
         timestamps = []
         t_init = time()
@@ -59,7 +67,7 @@ class Datareceiver:
 
                 if timestamp:
                     res.append(data)
-                    self.subscription.notify_all_subscribers(self.settings.type, data, timestamp)
+                    self.subscription.notify_all_subscribers(self.settings.type, data, timestamp, channel_descriptor)
                     timestamps.extend(timestamp)
             except KeyboardInterrupt:
                 break
