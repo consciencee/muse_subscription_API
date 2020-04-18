@@ -2,7 +2,7 @@ from muselsl.constants import LSL_SCAN_TIMEOUT, LSL_EEG_CHUNK, LSL_PPG_CHUNK, LS
 from pylsl import StreamInlet, resolve_byprop
 from collections import namedtuple
 from time import time, sleep, strftime, gmtime
-from multiprocessing import set_start_method, Process
+import threading
 from .subscription import Subscription
 import numpy as np
 import pandas as pd
@@ -26,7 +26,7 @@ class Datareceiver:
         # self.channels = []
 
     def receive_parallel(self):
-        process = Process(target=self.receive)
+        process = threading.Thread(target=self.receive)
         process.start()
         return process
 
