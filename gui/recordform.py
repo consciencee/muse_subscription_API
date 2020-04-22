@@ -5,7 +5,7 @@ import pathlib
 
 
 class RecordForm(QtWidgets.QWidget):
-    start_record = pyqtSignal('QString', QString)
+    start_record = pyqtSignal('QString', 'QString')
     stop_record = pyqtSignal()
 
     def __init__(self):
