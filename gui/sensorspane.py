@@ -43,7 +43,8 @@ class SensorPane(QtWidgets.QWidget):
             self.layout().addWidget(sensor)
             self.sensors.append(sensor)
 
-    @pyqtSlot(np.ndarray)
-    def update_data(self, data):
+    @pyqtSlot(np.ndarray, object)
+    def update_data(self, data, channels):
         for i in range(data.size):
             self.sensors[i].update_data(data[i])
+            self.sensors[i].set_name(channels.ch_names[i])
