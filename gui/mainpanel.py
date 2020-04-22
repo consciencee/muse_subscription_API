@@ -7,6 +7,6 @@ class MainPanel(QtWidgets.QWidget):
     def __init__(self):
         super(MainPanel, self).__init__()
 
-        self.sensorPaneWidget = SensorPane(["a", "b", "c", "d", "e"])
+        self.sensorPaneWidget = SensorPane(["", "", "", "", ""])
         self.setLayout(QtWidgets.QVBoxLayout())
         self.layout().addWidget(self.sensorPaneWidget)
