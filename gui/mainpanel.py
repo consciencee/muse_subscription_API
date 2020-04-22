@@ -12,16 +12,31 @@ class MainPanel(QtWidgets.QWidget):
 
         self.sensorPaneWidget = SensorPane(["", "", "", "", ""])
         self.dataRecordWidget = RecordForm()
+        self.dataRecordWidget.setObjectName('recordForm')
         self.setLayout(QtWidgets.QVBoxLayout())
-        self.layout().addWidget(QtWidgets.QLabel("Sensor info"))
+
+        sensinfo_lbl = QtWidgets.QLabel("Sensor info")
+        self.layout().addWidget(sensinfo_lbl)
+        self.layout().setAlignment(sensinfo_lbl, Qt.AlignLeft)
+        sensinfo_lbl.setProperty('class', 'header')
+
         self.layout().addWidget(self.sensorPaneWidget)
         self.layout().addWidget(QtWidgets.QLabel())
-        self.layout().addWidget(QtWidgets.QLabel("Data recording"))
+
+        datarec_lbl = QtWidgets.QLabel("Data recording")
+        self.layout().addWidget(datarec_lbl)
+        self.layout().setAlignment(datarec_lbl, Qt.AlignLeft)
+        datarec_lbl.setProperty('class', 'header')
+
         self.layout().addWidget(self.dataRecordWidget)
 
-        print(os.getcwd())
+        self.setObjectName('mainForm')
+
+        QtGui.QFontDatabase.addApplicationFont('gui/resources/Roboto-Light.ttf')
+        QtGui.QFontDatabase.addApplicationFont('gui/resources/Roboto-Regular.ttf')
+
         qssFile = 'gui/resources/style.qss'
         with open(qssFile, 'r') as fh:
             self.setStyleSheet(fh.read())
 
-        QtGui.QFontDatabase.addApplicationFont('gui/resources/Roboto-Light.ttf')
+        #print(QtGui.QFontDatabase.families())

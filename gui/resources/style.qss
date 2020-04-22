@@ -1,3 +1,14 @@
+#mainForm > QLabel.header {
+    font-family: Roboto Regular;
+    font-size: 16px;
+    color: black;
+    max-width: 150px;
+    border: none;
+    border-bottom: 1px solid '#37475c';
+    qproperty-alignment: AlignCenter;
+    padding: 3px;
+}
+
 QLabel.sensor {
     min-height: 40px;
     min-width: 40px;
@@ -8,3 +19,52 @@ QLabel.sensor {
     qproperty-alignment: AlignCenter;
     background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 255, 255, 255), stop:1 '#bf42f5')
 }
+
+#recordForm QLabel {
+    font-family: Roboto Light;
+    font-size: 14px;
+    color: '#37475c';
+}
+
+#recordForm QLineEdit {
+    background-color: transparent;
+    padding: 2px;
+    padding-left: 5px;
+    border: none;
+    border-bottom: 1px solid '#2b5894';
+    font-family: Roboto Light;
+    color: '#2b5894';
+    font-size: 14px;
+}
+
+#recordForm QPushButton.browse-btt {
+    background-color: '#cbddf5';
+    padding: 2px;
+    border: 2px solid '#2b5894';
+    border-radius: 6px;
+    margin: 3px;
+    min-width: 70px;
+    max-width: 70px;
+    font-family: Roboto Light;
+    font-size: 13px;
+}
+
+#recordForm QPushButton.record-btt {
+    background-color: '#37475c';
+    padding: 5px;
+    border: 3px solid '#2b5894';
+    border-radius: 8px;
+    max-width: 100px;
+    min-width: 100px;
+    alignment: center;
+    font-family: Roboto Light;
+    font-size: 14px;
+    color: '#cbddf5'
+}
+
+#recordForm QLabel.time-lbl {
+    font-family: Roboto Regular;
+    font-size: 14px;
+    color: black;
+}
+

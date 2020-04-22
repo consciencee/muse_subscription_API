@@ -15,17 +15,20 @@ class RecordForm(QtWidgets.QWidget):
         self.record_status_lbl = QtWidgets.QLabel('')
         self.record_status = 0
         self.record_btt.clicked.connect(self.on_rec_clicked)
+        self.record_btt.setProperty('class', 'record-btt')
 
         self.record_time_lbl = QtWidgets.QLabel('')
         self.record_timer = QTimer(self)
         self.seconds_recorded = 0
         self.record_timer.timeout.connect(self.update_time_lbl)
+        self.record_time_lbl.setProperty('class', 'time-lbl')
 
         self.dir_edit_btt = QtWidgets.QPushButton('Browse...')
         self.dirname = str(pathlib.Path().absolute())
         self.dirname_lbl = QtWidgets.QLabel(self.dirname)
         self.filename_edit = QtWidgets.QLineEdit('')
         self.dir_edit_btt.clicked.connect(self.show_select_dir_dialog)
+        self.dir_edit_btt.setProperty('class', 'browse-btt')
 
         outputsettings_layout = QtWidgets.QVBoxLayout()
         filesettings_layout = QtWidgets.QHBoxLayout()
@@ -45,8 +48,14 @@ class RecordForm(QtWidgets.QWidget):
         main_layout.addLayout(outputsettings_layout)
         main_layout.addWidget(QtWidgets.QLabel())
         main_layout.addWidget(self.record_btt)
-        main_layout.addWidget(self.record_status_lbl)
-        main_layout.addWidget(self.record_time_lbl)
+        main_layout.setAlignment(self.record_btt, Qt.AlignCenter)
+
+        status_layout = QtWidgets.QHBoxLayout()
+        status_layout.addWidget(self.record_status_lbl)
+        status_layout.addWidget(self.record_time_lbl)
+        status_layout.setAlignment(self.record_time_lbl, Qt.AlignRight)
+
+        main_layout.addLayout(status_layout)
 
         self.setLayout(main_layout)
 
