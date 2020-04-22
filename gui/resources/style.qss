@@ -1,0 +1,10 @@
+QLabel.sensor {
+    min-height: 40px;
+    min-width: 40px;
+    max-height: 480px;
+    max-width: 40px;
+    border: 2px solid black;
+    border-radius: 20px;
+    qproperty-alignment: AlignCenter;
+    background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 255, 255, 255), stop:1 '#bf42f5')
+}

@@ -33,15 +33,13 @@ class SensorWidget(QtWidgets.QWidget):
         self.layout().addWidget(self.label)
         self.layout().addWidget(self.color_label)
 
-        self.color_label.resize(80, 80)
-        self.color_label.setStyleSheet("border: 3px solid black;border - radius: 40px;")
+        self.color_label.setProperty('class', 'sensor')
 
     def update_data(self, data):
         col = qual_to_col(int(data))
         self.color_label.setText(str(data))
         self.color_label.setStyleSheet("QLabel { "
-                                       "background-color: '" + str(col) + "';"
-                                                                          "}")
+                                       "background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 255, 255, 255), stop:1 '" + str(col) + "')}")
 
     def set_name(self, name):
         self.label.setText(name)
