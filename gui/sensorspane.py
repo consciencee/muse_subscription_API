@@ -29,7 +29,7 @@ class SensorWidget(QtWidgets.QWidget):
         self.label = QtWidgets.QLabel(name)
         self.color_label = QtWidgets.QLabel('0')
 
-        self.setLayout(QtWidgets.QHBoxLayout())
+        self.setLayout(QtWidgets.QVBoxLayout())
         self.layout().addWidget(self.label)
         self.layout().addWidget(self.color_label)
 
@@ -49,7 +49,7 @@ class SensorPane(QtWidgets.QWidget):
     def __init__(self, chnames):
         super(SensorPane, self).__init__()
 
-        self.setLayout(QtWidgets.QVBoxLayout())
+        self.setLayout(QtWidgets.QHBoxLayout())
 
         self.sensors = []
 
