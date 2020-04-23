@@ -94,7 +94,7 @@ class MuseQtHandler(QObject):
         self.quality_received.emit(qualified_data, channel)
 
         if self.is_recording:
-            self.fileRecorder.append(data)
+            self.fileRecorder.append(data, timestamp)
 
 class MainWindow(QtWidgets.QMainWindow):
 

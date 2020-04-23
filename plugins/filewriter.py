@@ -7,9 +7,9 @@ class FileWriter:
     def open(self, dirname, filename):
         self.fh = open(str(pathlib.Path(dirname) / filename), 'w+')
 
-    def append(self, data):
-        for sample in data:
-            self.fh.write(', '.join(map(str, sample)) + '\n')
+    def append(self, data, timestamp):
+        for i in range(len(data)):
+            self.fh.write(str(timestamp[i]) + ', ' + ', '.join(map(str, data[i])) + '\n')
 
     def close(self):
         self.fh.close()
