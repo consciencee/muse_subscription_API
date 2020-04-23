@@ -44,6 +44,19 @@ QLabel.sensor {
     font-family: Roboto Light;
     color: '#2b5894';
     font-size: 14px;
+    max-width: 140px;
+    min-width: 140px;
+}
+
+#recordForm QLabel.warn-lbl {
+    background-color: transparent;
+    padding: 2px;
+    border: none;
+    font-family: Roboto Light;
+    font-size: 13px;
+    color: '#e62c17';
+    min-width: 340px;
+    max-width: 340px;
 }
 
 #recordForm QPushButton.browse-btt {
