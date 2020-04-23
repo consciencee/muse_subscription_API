@@ -45,7 +45,7 @@ class SensorWidget(QtWidgets.QWidget):
         self.label.setText(name)
 
 
-class SensorPane(QtWidgets.QWidget):
+class SensorPane(QtWidgets.QFrame):
     def __init__(self, chnames):
         super(SensorPane, self).__init__()
 

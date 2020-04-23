@@ -1,12 +1,14 @@
+#mainForm {
+    background-color: '#efebf2';
+}
 #mainForm > QLabel.header {
     font-family: Roboto Regular;
     font-size: 16px;
     color: black;
     max-width: 150px;
     border: none;
-    border-bottom: 1px solid '#37475c';
     qproperty-alignment: AlignCenter;
-    padding: 3px;
+    padding: 0px;
 }
 
 QLabel.sensor {
@@ -18,6 +20,13 @@ QLabel.sensor {
     border-radius: 20px;
     qproperty-alignment: AlignCenter;
     background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 255, 255, 255), stop:1 '#bf42f5')
+}
+
+#recordForm, #sensorForm {
+    border: 1px solid rgba(245, 249, 255, 0.5);
+    border-radius: 10px;
+    padding: 0px;
+    background: rgba(245, 249, 255, 0.5);
 }
 
 #recordForm QLabel {

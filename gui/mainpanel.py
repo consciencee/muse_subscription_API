@@ -6,13 +6,14 @@ from gui.recordform import RecordForm
 import os
 
 
-class MainPanel(QtWidgets.QWidget):
+class MainPanel(QtWidgets.QFrame):
     def __init__(self):
         super(MainPanel, self).__init__()
 
         self.sensorPaneWidget = SensorPane(["", "", "", "", ""])
         self.dataRecordWidget = RecordForm()
         self.dataRecordWidget.setObjectName('recordForm')
+        self.sensorPaneWidget.setObjectName('sensorForm')
         self.setLayout(QtWidgets.QVBoxLayout())
 
         sensinfo_lbl = QtWidgets.QLabel("Sensor info")
@@ -29,6 +30,7 @@ class MainPanel(QtWidgets.QWidget):
         datarec_lbl.setProperty('class', 'header')
 
         self.layout().addWidget(self.dataRecordWidget)
+        self.layout().setSpacing(0)
 
         self.setObjectName('mainForm')
 

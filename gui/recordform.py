@@ -4,7 +4,7 @@ import datetime
 import pathlib
 
 
-class RecordForm(QtWidgets.QWidget):
+class RecordForm(QtWidgets.QFrame):
     start_record = pyqtSignal('QString', 'QString')
     stop_record = pyqtSignal()
 
@@ -40,6 +40,7 @@ class RecordForm(QtWidgets.QWidget):
         dirsettings_layout.addWidget(QtWidgets.QLabel('Directory:'))
         dirsettings_layout.addWidget(self.dirname_lbl)
         dirsettings_layout.addWidget(self.dir_edit_btt)
+        dirsettings_layout.setAlignment(Qt.AlignLeft)
 
         outputsettings_layout.addLayout(dirsettings_layout)
         outputsettings_layout.addLayout(filesettings_layout)
