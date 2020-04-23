@@ -18,6 +18,8 @@ class RecordForm(QtWidgets.QFrame):
         self.record_btt.setProperty('class', 'record-btt')
 
         self.record_time_lbl = QtWidgets.QLabel('')
+        self.record_icon_lbl = QtWidgets.QLabel()
+        self.record_icon_lbl.setProperty('class', 'record-icon')
         self.record_timer = QTimer(self)
         self.seconds_recorded = 0
         self.record_timer.timeout.connect(self.update_time_lbl)
@@ -59,9 +61,13 @@ class RecordForm(QtWidgets.QFrame):
         main_layout.setAlignment(self.record_btt, Qt.AlignCenter)
 
         status_layout = QtWidgets.QHBoxLayout()
+        status_layout.addWidget(self.record_icon_lbl)
         status_layout.addWidget(self.record_status_lbl)
+        status_layout.addStretch(1)
         status_layout.addWidget(self.record_time_lbl)
         status_layout.setAlignment(self.record_time_lbl, Qt.AlignRight)
+
+        self.record_icon_lbl.setVisible(False)
 
         main_layout.addLayout(status_layout)
 
@@ -77,6 +83,7 @@ class RecordForm(QtWidgets.QFrame):
         if not self.check_file_status(self.filename_edit.text()):
             return
         self.record_status = 1
+        self.record_icon_lbl.setVisible(True)
         self.record_btt.setText('Stop')
         self.filename_edit.setEnabled(False)
         self.record_status_lbl.setText('Recording to file ' + self.filename_edit.text() + ' ...')
@@ -86,6 +93,7 @@ class RecordForm(QtWidgets.QFrame):
 
     def stop_record_process(self):
         self.record_status = 0
+        self.record_icon_lbl.setVisible(False)
         self.record_btt.setText('Start')
         self.filename_edit.setEnabled(True)
         self.record_status_lbl.setText('Record completed: ' + self.filename_edit.text() + ' .')

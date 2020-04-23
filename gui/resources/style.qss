@@ -90,3 +90,13 @@ QLabel.sensor {
     color: black;
 }
 
+#recordForm QLabel.record-icon {
+    min-width: 10px;
+    max-width: 10px;
+    min-height: 10px;
+    max-height: 10px;
+    background: '#e62c17';
+    border: 1px solid '#e62c17';
+    border-radius: 6px;
+}
+
